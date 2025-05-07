@@ -85,6 +85,16 @@ public class MyFrame extends JFrame implements ActionListener{
             }else if(comp == "Paper"){
                 result.setText("Tie");
             }
+        }else if(e.getSource() == scissor){
+            user.setText("Scissor");
+            computer.setText(comp);
+            if(comp == "Rock"){
+                result.setText("You lose");
+            }else if(comp == "Paper"){
+                result.setText("You win");
+            }else if(comp == "Scissor"){
+                result.setText("Tie");
+            }
         }
     }
 
