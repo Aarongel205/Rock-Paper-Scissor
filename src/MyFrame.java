@@ -7,8 +7,9 @@ public class MyFrame extends JFrame implements ActionListener{
     ArrayList<String>choices = new ArrayList<String>();
     JLabel user;
     JLabel computer;
-    JLabel result;
-    JLabel scoreResult;
+    JLabel matchResult;
+    JLabel playerResult;
+    JLabel computerResult;
 
     JButton rock;
     JButton paper;
@@ -23,10 +24,13 @@ public class MyFrame extends JFrame implements ActionListener{
         choices.add("Scissor");
 
         JPanel resultPanel = new JPanel();
-        resultPanel.setLayout(new GridLayout(1, 2));
 
-        scoreResult = new JLabel("Score: " + Integer.toString(playerScore));
-        result = new JLabel("Result");
+        JPanel scorePanel = new JPanel();
+        scorePanel.setLayout(new GridLayout(1, 2));
+
+        computerResult = new JLabel("Computer Score" + Integer.toString(computerScore));
+        playerResult = new JLabel("Your score: " + Integer.toString(playerScore));
+        matchResult = new JLabel("Result");
         user = new JLabel("You");
 
         computer = new JLabel();
@@ -59,10 +63,11 @@ public class MyFrame extends JFrame implements ActionListener{
         this.add(user, BorderLayout.WEST);
         this.add(computer, BorderLayout.EAST);
 
-        this.add(resultPanel, BorderLayout.NORTH);
-
-        resultPanel.add(result);
-        resultPanel.add(scoreResult);
+        resultPanel.add(matchResult);
+        scorePanel.add(playerResult);
+        scorePanel.add(computerResult);
+        this.add(resultPanel, BorderLayout.CENTER);
+        this.add(scorePanel, BorderLayout.NORTH);
 
         this.setVisible(true);
     }
@@ -80,37 +85,43 @@ public class MyFrame extends JFrame implements ActionListener{
             computer.setText(comp);
             String choice = "Rock";
             if(comp == "Paper"){
-                result.setText("You lose");
+                matchResult.setText("You lose");
+                computerScore += 1;
+                computerResult.setText("Computer Score" + Integer.toString(computerScore));
             }else if(comp == "Scissor"){
-                result.setText("You win");
+                matchResult.setText("You win");
                 playerScore += 1;
-                scoreResult.setText("Score: " + Integer.toString(playerScore));
+                playerResult.setText("Your score: " + Integer.toString(playerScore));
             }else if(comp == "Rock"){
-                result.setText("Tie");
+                matchResult.setText("Tie");
             }
         }else if(e.getSource() == paper){
             user.setText("Paper");
             computer.setText(comp);
             if(comp == "Scissor"){
-                result.setText("You lose");
+                matchResult.setText("You lose");
+                computerScore += 1;
+                computerResult.setText("Computer Score" + Integer.toString(computerScore));
             }else if(comp == "Rock"){
-                result.setText("You win");
+                matchResult.setText("You win");
                 playerScore += 1;
-                scoreResult.setText("Score: " + Integer.toString(playerScore));
+                playerResult.setText("Your score: " + Integer.toString(playerScore));
             }else if(comp == "Paper"){
-                result.setText("Tie");
+                matchResult.setText("Tie");
             }
         }else if(e.getSource() == scissor){
             user.setText("Scissor");
             computer.setText(comp);
             if(comp == "Rock"){
-                result.setText("You lose");
+                matchResult.setText("You lose");
+                computerScore += 1;
+                computerResult.setText("Computer Score" + Integer.toString(computerScore));
             }else if(comp == "Paper"){
-                result.setText("You win");
+                matchResult.setText("You win");
                 playerScore += 1;
-                scoreResult.setText("Score: " + Integer.toString(playerScore));
+                playerResult.setText("Your score: " + Integer.toString(playerScore));
             }else if(comp == "Scissor"){
-                result.setText("Tie");
+                matchResult.setText("Tie");
             }
         }
     }
