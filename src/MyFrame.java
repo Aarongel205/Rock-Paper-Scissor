@@ -14,7 +14,8 @@ public class MyFrame extends JFrame implements ActionListener{
     JButton paper;
     JButton scissor;
 
-    int score = 0;
+    int playerScore = 0;
+    int computerScore = 0;
 
     MyFrame(){
         choices.add("Rock");
@@ -24,7 +25,7 @@ public class MyFrame extends JFrame implements ActionListener{
         JPanel resultPanel = new JPanel();
         resultPanel.setLayout(new GridLayout(1, 2));
 
-        scoreResult = new JLabel("Score: " + Integer.toString(score));
+        scoreResult = new JLabel("Score: " + Integer.toString(playerScore));
         result = new JLabel("Result");
         user = new JLabel("You");
 
@@ -82,8 +83,8 @@ public class MyFrame extends JFrame implements ActionListener{
                 result.setText("You lose");
             }else if(comp == "Scissor"){
                 result.setText("You win");
-                score += 1;
-                scoreResult.setText("Score: " + Integer.toString(score));
+                playerScore += 1;
+                scoreResult.setText("Score: " + Integer.toString(playerScore));
             }else if(comp == "Rock"){
                 result.setText("Tie");
             }
@@ -94,7 +95,8 @@ public class MyFrame extends JFrame implements ActionListener{
                 result.setText("You lose");
             }else if(comp == "Rock"){
                 result.setText("You win");
-                score += 1;
+                playerScore += 1;
+                scoreResult.setText("Score: " + Integer.toString(playerScore));
             }else if(comp == "Paper"){
                 result.setText("Tie");
             }
@@ -105,7 +107,8 @@ public class MyFrame extends JFrame implements ActionListener{
                 result.setText("You lose");
             }else if(comp == "Paper"){
                 result.setText("You win");
-                score += 1;
+                playerScore += 1;
+                scoreResult.setText("Score: " + Integer.toString(playerScore));
             }else if(comp == "Scissor"){
                 result.setText("Tie");
             }
