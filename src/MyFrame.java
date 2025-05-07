@@ -8,18 +8,24 @@ public class MyFrame extends JFrame implements ActionListener{
     JLabel user;
     JLabel computer;
     JLabel result;
+    JLabel scoreResult;
 
     JButton rock;
     JButton paper;
     JButton scissor;
+
+    int score = 0;
 
     MyFrame(){
         choices.add("Rock");
         choices.add("Paper");
         choices.add("Scissor");
 
-        result = new JLabel("Result");
+        JPanel resultPanel = new JPanel();
+        resultPanel.setLayout(new GridLayout(1, 2));
 
+        scoreResult = new JLabel("Score: " + Integer.toString(score));
+        result = new JLabel("Result");
         user = new JLabel("You");
 
         computer = new JLabel();
@@ -51,7 +57,11 @@ public class MyFrame extends JFrame implements ActionListener{
         this.add(choicePanel, BorderLayout.SOUTH);
         this.add(user, BorderLayout.WEST);
         this.add(computer, BorderLayout.EAST);
-        this.add(result, BorderLayout.NORTH);
+
+        this.add(resultPanel, BorderLayout.NORTH);
+
+        resultPanel.add(result);
+        resultPanel.add(scoreResult);
 
         this.setVisible(true);
     }
@@ -72,6 +82,8 @@ public class MyFrame extends JFrame implements ActionListener{
                 result.setText("You lose");
             }else if(comp == "Scissor"){
                 result.setText("You win");
+                score += 1;
+                scoreResult.setText("Score: " + Integer.toString(score));
             }else if(comp == "Rock"){
                 result.setText("Tie");
             }
@@ -82,6 +94,7 @@ public class MyFrame extends JFrame implements ActionListener{
                 result.setText("You lose");
             }else if(comp == "Rock"){
                 result.setText("You win");
+                score += 1;
             }else if(comp == "Paper"){
                 result.setText("Tie");
             }
@@ -92,6 +105,7 @@ public class MyFrame extends JFrame implements ActionListener{
                 result.setText("You lose");
             }else if(comp == "Paper"){
                 result.setText("You win");
+                score += 1;
             }else if(comp == "Scissor"){
                 result.setText("Tie");
             }
