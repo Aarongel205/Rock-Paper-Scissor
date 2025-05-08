@@ -21,7 +21,7 @@ public class MyFrame extends JFrame implements ActionListener{
     MyFrame(){
         choices.add("✊");
         choices.add("✌");
-        choices.add("🖐️");
+        choices.add("✋");
 
         JPanel resultPanel = new JPanel();
 
@@ -42,10 +42,10 @@ public class MyFrame extends JFrame implements ActionListener{
         matchResult.setOpaque(true);
 
         user = new JLabel();
-        user.setFont(user.getFont().deriveFont(200f));
+        user.setFont(user.getFont().deriveFont(150f));
 
         computer = new JLabel();
-        computer.setFont(user.getFont().deriveFont(200f));
+        computer.setFont(user.getFont().deriveFont(150f));
 
         rock = new JButton("Rock");
         rock.setPreferredSize(new Dimension(100, 100));
@@ -95,7 +95,7 @@ public class MyFrame extends JFrame implements ActionListener{
             user.setText("✊");
             computer.setText(comp);
             String choice = "✊";
-            if(comp == "🖐️"){
+            if(comp == "✋"){
                 matchResult.setText("You lose");
                 computerScore += 1;
                 computerResult.setText("Computer score: " + Integer.toString(computerScore));
@@ -107,7 +107,7 @@ public class MyFrame extends JFrame implements ActionListener{
                 matchResult.setText("Tie");
             }
         }else if(e.getSource() == paper){
-            user.setText("🖐️");
+            user.setText("✋");
             computer.setText(comp);
             if(comp == "✌"){
                 matchResult.setText("You lose");
@@ -117,7 +117,7 @@ public class MyFrame extends JFrame implements ActionListener{
                 matchResult.setText("You win");
                 playerScore += 1;
                 playerResult.setText("Your score: " + Integer.toString(playerScore));
-            }else if(comp == "🖐️"){
+            }else if(comp == "✋"){
                 matchResult.setText("Tie");
             }
         }else if(e.getSource() == scissor){
@@ -127,7 +127,7 @@ public class MyFrame extends JFrame implements ActionListener{
                 matchResult.setText("You lose");
                 computerScore += 1;
                 computerResult.setText("Computer score: " + Integer.toString(computerScore));
-            }else if(comp == "🖐️"){
+            }else if(comp == "✋"){
                 matchResult.setText("You win");
                 playerScore += 1;
                 playerResult.setText("Your score: " + Integer.toString(playerScore));
