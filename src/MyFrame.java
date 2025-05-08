@@ -24,6 +24,7 @@ public class MyFrame extends JFrame implements ActionListener{
         choices.add("✋");
 
         JPanel resultPanel = new JPanel();
+        resultPanel.setBackground(Color.ORANGE);
 
         JPanel scorePanel = new JPanel();
         scorePanel.setLayout(new GridLayout(1, 2));
@@ -34,18 +35,29 @@ public class MyFrame extends JFrame implements ActionListener{
         computerResult.setOpaque(true);
 
         playerResult = new JLabel("Your score: " + Integer.toString(playerScore));
+        playerResult.setVerticalAlignment(JLabel.CENTER);
         playerResult.setBackground(Color.BLUE);
         playerResult.setOpaque(true);
 
-        matchResult = new JLabel("Result");
+        matchResult = new JLabel("V.S");
         matchResult.setBackground(Color.YELLOW);
+        matchResult.setFont(matchResult.getFont().deriveFont(30f));
         matchResult.setOpaque(true);
 
         user = new JLabel();
-        user.setFont(user.getFont().deriveFont(150f));
+        user.setBackground(Color.BLACK);
+        user.setFont(user.getFont().deriveFont(90f));
+        user.setHorizontalAlignment(JLabel.CENTER);
+        user.setVerticalAlignment(JLabel.CENTER);
+        user.setOpaque(true);
 
         computer = new JLabel();
-        computer.setFont(user.getFont().deriveFont(150f));
+        computer.setBackground(Color.BLACK);
+        computer.setFont(user.getFont().deriveFont(90f));
+        computer.setHorizontalAlignment(JLabel.CENTER);
+        computer.setVerticalAlignment(JLabel.CENTER);
+        computer.setOpaque(true);
+
 
         rock = new JButton("Rock");
         rock.setPreferredSize(new Dimension(100, 100));
@@ -86,6 +98,14 @@ public class MyFrame extends JFrame implements ActionListener{
        Collections.shuffle(choices);
        String result = choices.get(0);
        return result;
+    }
+
+    public void reset(){
+        playerScore = 0;
+        computerScore = 0;
+        playerResult.setText("Your score: 0");
+        computerResult.setText("Computer score: 0");
+        matchResult.setText("V.S");
     }
 
     @Override
@@ -134,6 +154,14 @@ public class MyFrame extends JFrame implements ActionListener{
             }else if(comp == "✌"){
                 matchResult.setText("Tie");
             }
+        }
+
+        if(playerScore == 5){
+            JOptionPane.showMessageDialog(this, "You win");
+            reset();
+        }else if(computerScore == 5){
+            JOptionPane.showMessageDialog(this, "You lose");
+            reset();
         }
     }
 
