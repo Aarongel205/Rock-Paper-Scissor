@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.*;
 import java.awt.event.*;
+import javax.swing.border.*;
 
 public class App implements ActionListener {
     ArrayList<String>choices = new ArrayList<String>();
@@ -25,6 +26,8 @@ public class App implements ActionListener {
         choices.add("✌");
         choices.add("✋");
 
+        Border border = BorderFactory.createLineBorder(Color.WHITE);
+
         JPanel computerPanel = new JPanel();
         computerPanel.setLayout(new BorderLayout());
         computerPanel.setPreferredSize(new Dimension(100, 500));
@@ -36,6 +39,7 @@ public class App implements ActionListener {
         userPanel.setBackground(Color.BLACK);
 
         JPanel resultPanel = new JPanel();
+        resultPanel.setLayout(new BorderLayout());
         resultPanel.setBackground(Color.BLACK);
         resultPanel.setPreferredSize(new Dimension(200, 300));
 
@@ -43,12 +47,14 @@ public class App implements ActionListener {
         scorePanel.setLayout(new GridLayout(1, 2));
 
         computerResult = new JLabel("Computer score: " + Integer.toString(computerScore));
+        computerResult.setBorder(border);
         computerResult.setForeground(Color.WHITE);
         computerResult.setHorizontalAlignment(JLabel.CENTER);
         computerResult.setBackground(Color.BLACK);
         computerResult.setOpaque(true);
 
         playerResult = new JLabel("Your score: " + Integer.toString(playerScore));
+        playerResult.setBorder(border);
         playerResult.setForeground(Color.WHITE);
         playerResult.setHorizontalAlignment(JLabel.CENTER);
         playerResult.setBackground(Color.BLACK);
@@ -57,19 +63,20 @@ public class App implements ActionListener {
         matchResult = new JLabel("V.S");
         matchResult.setForeground(Color.WHITE);
         matchResult.setHorizontalAlignment(JLabel.CENTER);
+        matchResult.setVerticalAlignment(JLabel.CENTER);
         matchResult.setBackground(Color.YELLOW);
         matchResult.setFont(matchResult.getFont().deriveFont(20f));
         matchResult.setBackground(Color.BLACK);
         matchResult.setOpaque(true);
 
         user = new JLabel();
-        user.setForeground(Color.WHITE);
+        user.setForeground(Color.CYAN);
         user.setFont(user.getFont().deriveFont(90f));
         user.setHorizontalAlignment(JLabel.CENTER);
         user.setVerticalAlignment(JLabel.CENTER);
 
         computer = new JLabel();
-        computer.setForeground(Color.WHITE);
+        computer.setForeground(Color.RED);
         computer.setFont(user.getFont().deriveFont(90f));
         computer.setHorizontalAlignment(JLabel.CENTER);
         computer.setVerticalAlignment(JLabel.CENTER);
