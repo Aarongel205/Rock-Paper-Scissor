@@ -19,22 +19,33 @@ public class MyFrame extends JFrame implements ActionListener{
     int computerScore = 0;
 
     MyFrame(){
-        choices.add("Rock");
-        choices.add("Paper");
-        choices.add("Scissor");
+        choices.add("✊");
+        choices.add("✌");
+        choices.add("🖐️");
 
         JPanel resultPanel = new JPanel();
 
         JPanel scorePanel = new JPanel();
         scorePanel.setLayout(new GridLayout(1, 2));
 
-        computerResult = new JLabel("Computer Score" + Integer.toString(computerScore));
+        computerResult = new JLabel("Computer score: " + Integer.toString(computerScore));
+        computerResult.setHorizontalAlignment(JLabel.CENTER);
+        computerResult.setBackground(Color.RED);
+        computerResult.setOpaque(true);
+
         playerResult = new JLabel("Your score: " + Integer.toString(playerScore));
+        playerResult.setBackground(Color.BLUE);
+        playerResult.setOpaque(true);
+
         matchResult = new JLabel("Result");
-        user = new JLabel("You");
+        matchResult.setBackground(Color.YELLOW);
+        matchResult.setOpaque(true);
+
+        user = new JLabel();
+        user.setFont(user.getFont().deriveFont(200f));
 
         computer = new JLabel();
-        computer.setText("Computer");
+        computer.setFont(user.getFont().deriveFont(200f));
 
         rock = new JButton("Rock");
         rock.setPreferredSize(new Dimension(100, 100));
@@ -81,46 +92,46 @@ public class MyFrame extends JFrame implements ActionListener{
     public void actionPerformed(ActionEvent e){
         String comp = result();
         if(e.getSource() == rock){
-            user.setText("Rock");
+            user.setText("✊");
             computer.setText(comp);
-            String choice = "Rock";
-            if(comp == "Paper"){
+            String choice = "✊";
+            if(comp == "🖐️"){
                 matchResult.setText("You lose");
                 computerScore += 1;
-                computerResult.setText("Computer Score" + Integer.toString(computerScore));
-            }else if(comp == "Scissor"){
+                computerResult.setText("Computer score: " + Integer.toString(computerScore));
+            }else if(comp == "✌"){
                 matchResult.setText("You win");
                 playerScore += 1;
                 playerResult.setText("Your score: " + Integer.toString(playerScore));
-            }else if(comp == "Rock"){
+            }else if(comp == "✊"){
                 matchResult.setText("Tie");
             }
         }else if(e.getSource() == paper){
-            user.setText("Paper");
+            user.setText("🖐️");
             computer.setText(comp);
-            if(comp == "Scissor"){
+            if(comp == "✌"){
                 matchResult.setText("You lose");
                 computerScore += 1;
-                computerResult.setText("Computer Score" + Integer.toString(computerScore));
-            }else if(comp == "Rock"){
+                computerResult.setText("Computer score: " + Integer.toString(computerScore));
+            }else if(comp == "✊"){
                 matchResult.setText("You win");
                 playerScore += 1;
                 playerResult.setText("Your score: " + Integer.toString(playerScore));
-            }else if(comp == "Paper"){
+            }else if(comp == "🖐️"){
                 matchResult.setText("Tie");
             }
         }else if(e.getSource() == scissor){
-            user.setText("Scissor");
+            user.setText("✌");
             computer.setText(comp);
-            if(comp == "Rock"){
+            if(comp == "✊"){
                 matchResult.setText("You lose");
                 computerScore += 1;
-                computerResult.setText("Computer Score" + Integer.toString(computerScore));
-            }else if(comp == "Paper"){
+                computerResult.setText("Computer score: " + Integer.toString(computerScore));
+            }else if(comp == "🖐️"){
                 matchResult.setText("You win");
                 playerScore += 1;
                 playerResult.setText("Your score: " + Integer.toString(playerScore));
-            }else if(comp == "Scissor"){
+            }else if(comp == "✌"){
                 matchResult.setText("Tie");
             }
         }
